@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 263acbf7297b469489e3bb0b4da0e75c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - metronomo: {fileID: 8300000, guid: 15c4c36a45712cf409c51bee61cc0400, type: 3}
+  - audioSource: {instanceID: 0}
+  - button: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
