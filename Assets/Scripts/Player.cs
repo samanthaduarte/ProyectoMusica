@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public bool startSong;
     public ScaleCalculator sc = new ScaleCalculator();
     public ProgressionGenerator pg = new ProgressionGenerator();
     public FormGenerator fg = new FormGenerator();
     public MelodyGenerator mg = new MelodyGenerator();
+    public Metronome met = new Metronome();
+    public RythmPlayer rp = new RythmPlayer();
     
     public List<Chord> acordes = new List<Chord>();
     public List<Chord> estructura = new List<Chord>();
@@ -25,6 +28,8 @@ public class Player : MonoBehaviour
 
     void TaskOnClick()
     {
+        met.StartSong();
+        rp.StartSong();
 
         // Generar una escala a partir de una nota 
         sc.CalculateScale();

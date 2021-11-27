@@ -75,7 +75,6 @@ public class ScaleCalculator : MonoBehaviour {
         escala.Add(notasEscala[11]);
         escala.Add(notasEscala[0]);
 
-        Debug.Log(escala);
     }
 
     // Genera todos los acordes de la escala

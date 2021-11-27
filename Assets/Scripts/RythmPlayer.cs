@@ -12,12 +12,17 @@ public class RythmPlayer : MonoBehaviour
 
     public RythmGenerator rg = new RythmGenerator();
 
-    private void Start() {
-        btnGenerar.onClick.AddListener(TaskOnClick);
+    public AudioSource bassdrum;
+    public AudioSource snare;
+    public AudioSource tom3;
+    public AudioSource tom5;
 
+
+    private void Start() {
+        //btnGenerar.onClick.AddListener(TaskOnClick);
     }
 
-    void TaskOnClick()
+    public void StartSong()
     {
         rg.StartRythm();
         rg.CalcularRelleno();
@@ -25,6 +30,9 @@ public class RythmPlayer : MonoBehaviour
         lblMetrica.text = "Métrica: "+rg.sub_cant.ToString()+"/"+rg.sub_base.ToString();
         lblClave.text = "Clave: "+string.Join(",", rg.clave);
         lblRelleno.text = "Relleno: "+string.Join(",", rg.relleno);
+        Debug.Log(string.Join(",", rg.relleno));
+        
+
     }
 
 

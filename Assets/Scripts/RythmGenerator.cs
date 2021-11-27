@@ -7,6 +7,7 @@ public class RythmGenerator : MonoBehaviour {
 
     public int sub_base = 4;
     public int sub_cant;
+    public int index;
     public int seed;
     //4 negras, 8 corcheas o 16 semicorcheas
     //3 negras, 6 corcheas o 12 semicorcheas
@@ -32,7 +33,7 @@ public class RythmGenerator : MonoBehaviour {
     public void CrearClave(int sub_cant, int sub_base){
         // Determinar random si serán negras corcheas o semicorcheas
         //                   sub_cant sub_cant*2 sub_cant*3
-        int index = Random.Range(0,3);
+        index = Random.Range(0,3);
         subdivision_clave = sub_cant*opciones_clave[index]; // 3 x 2 = 6
         
         int randItem = Random.Range(2,4); // escoger 2 o 3 para el arreglo
