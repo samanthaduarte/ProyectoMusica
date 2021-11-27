@@ -39,8 +39,7 @@ public class ScaleCalculator : MonoBehaviour {
 
         int contador = 5;
 
-        //notaInput = notas[Random.Range(0,notas.Count())];
-        notaInput = "mi";
+        notaInput = notas[Random.Range(0,notas.Count())];
 
         Debug.Log(notaInput);
 
