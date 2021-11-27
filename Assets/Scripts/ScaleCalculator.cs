@@ -12,14 +12,17 @@ public class ScaleCalculator : MonoBehaviour {
     public int notaIndex = 0;
     public List<string> escala = new List<string>();
     public string notaInput;
-    public List<string> notas = new List<string>();
+    private List<string> notas = new List<string>();
 
-    public List<string> escala1 = new List<string>();
-    public List<string> escala2 = new List<string>();
-    public List<string> notasEscala = new List<string>();
+    private List<string> escala1 = new List<string>();
+    private List<string> escala2 = new List<string>();
+    private List<string> notasEscala = new List<string>();
 
-    public List<string> sl1;
-    public List<string> sl2;
+    private List<string> sl1;
+    private List<string> sl2;
+    public List<Chord> acordes = new List<Chord>();
+
+    public Note note = new Note();
 
 
     // Recibe una nota y devuelve su escala
@@ -80,7 +83,6 @@ public class ScaleCalculator : MonoBehaviour {
     // Genera todos los acordes de la escala
     public List<Chord> CalculateChords(){
 
-        List<Chord> acordes = new List<Chord>();
         for (int i = 0; i < 7; i++) {
             Chord acordeObj = new Chord();
             acordeObj.index = i;
@@ -93,6 +95,7 @@ public class ScaleCalculator : MonoBehaviour {
             i+=1;
         }
         return(acordes);
+
     }
 
 }

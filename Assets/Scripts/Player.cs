@@ -10,15 +10,16 @@ public class Player : MonoBehaviour
     public ProgressionGenerator pg = new ProgressionGenerator();
     public FormGenerator fg = new FormGenerator();
     public MelodyGenerator mg = new MelodyGenerator();
-    public Metronome met = new Metronome();
     public RythmPlayer rp = new RythmPlayer();
     
-    public List<Chord> acordes = new List<Chord>();
+    public List<Chord> acordesEscala = new List<Chord>();
     public List<Chord> estructura = new List<Chord>();
     public List<List<string>> formas = new List<List<string>>();
 
     public Button btnGenerar;
     public Text lblNota;
+
+    public Note note = new Note();
 
     // Start is called before the first frame update
     void Start()
@@ -28,12 +29,14 @@ public class Player : MonoBehaviour
 
     void TaskOnClick()
     {
-        met.StartSong();
         rp.StartSong();
+       
 
         // Generar una escala a partir de una nota 
         sc.CalculateScale();
         lblNota.text = "Nota: "+sc.notaInput.ToString();
+        acordesEscala = sc.CalculateChords();
+
 
         // Generar todos los acordes de la escala
         // Para cada acorde
@@ -49,6 +52,13 @@ public class Player : MonoBehaviour
 
         // Generar 4 estructuras de 8 compases cada una
         //fg.GenerateForm();
+
+    }
+
+    public void PlayChords(){
+
+    }
+    public void PlayMelody(){
 
     }
 

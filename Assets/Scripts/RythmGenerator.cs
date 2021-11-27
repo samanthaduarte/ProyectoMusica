@@ -77,4 +77,12 @@ public class RythmGenerator : MonoBehaviour {
         }
     }
 
+    public void PlayRelleno(){
+
+    }
+
+    public void PlayRythm(){
+
+    }
+
 }

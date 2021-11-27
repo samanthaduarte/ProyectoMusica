@@ -9,7 +9,7 @@ public class Chord : MonoBehaviour
     public int duration = 0; //duracion (compases que ocupa) del acorde
     public string type; //tonica, dominante, subdominante
     public string strength; //fuerte o debil
-    public List<string> strengthList = new List<string>();
+    public List<string> strengthList = new List<string>(); 
 
     public void SetType(){
         // Determinar tipo del acorde
@@ -42,6 +42,13 @@ public class Chord : MonoBehaviour
 
     public void SetDuration(int dur){
         duration = dur;
+    }
+
+    public void PlayChord(){
+        Note note = GameObject.Find("Sounds").GetComponent<Note>();
+        note.PlayNote(acorde[0]);
+        note.PlayNote(acorde[0]);
+        note.PlayNote(acorde[0]);
     }
 }
 
