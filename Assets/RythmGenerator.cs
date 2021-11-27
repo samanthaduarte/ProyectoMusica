@@ -8,12 +8,19 @@ public class RythmGenerator : MonoBehaviour {
     public int sub_base = 4;
     public int sub_cant;
     public int seed;
-    public int[] opciones_clave = new int[] {1,2,4}; //4 negras, corcheas o semicorcheas
+    //4 negras, 8 corcheas o 16 semicorcheas
+    //3 negras, 6 corcheas o 12 semicorcheas
+    public int[] opciones_clave = new int[] {1,2,4};
     public int subdivision_clave;
     public List<int> clave = new List<int>();
+    public List<int> relleno = new List<int>();
 
-    public ScaleCalculator sc = new ScaleCalculator();
-    public List<string> escala = new List<string>();
+    
+    public void StartRythm() {
+        seed = System.DateTime.Now.Second;
+        GenerarRitmo(seed);
+        CrearClave(sub_cant,sub_base);
+    }
 
     // Generar metrica, puede ser 3/4 o 4/4 
     public void GenerarRitmo(int seed){
@@ -27,10 +34,9 @@ public class RythmGenerator : MonoBehaviour {
         //                   sub_cant sub_cant*2 sub_cant*3
         int index = Random.Range(0,3);
         subdivision_clave = sub_cant*opciones_clave[index]; // 3 x 2 = 6
-        Debug.Log(opciones_clave[index]);
         
+        int randItem = Random.Range(2,4); // escoger 2 o 3 para el arreglo
         while(clave.Sum() < subdivision_clave){  // [2,2,2]
-            int randItem = Random.Range(2,4); // escoger 2 o 3 para el arreglo
             clave.Add(randItem);
         }
         
@@ -39,23 +45,38 @@ public class RythmGenerator : MonoBehaviour {
             clave.Clear();
             CrearClave(sub_cant,sub_base);
         }
+        else{
+            Debug.Log("Metrica:" + sub_cant);
+            Debug.Log("Sub_clave:" + subdivision_clave);
+            Debug.Log("Clave:" + clave);
+
+            if(opciones_clave[index] == 1){
+                Debug.Log("negras");
+            }
+            else if(opciones_clave[index] == 2){
+                Debug.Log("corcheas");
+            }
+            else if(opciones_clave[index] == 4){
+                Debug.Log("semicorcheas");
+            }
+        }
 
     }
 
     // Calcular relleno
-    
-    //public void CrearClave(List<int> clave, int subdivision_clave){
-
-    //}
-
-    private void Start() {
-        seed = System.DateTime.Now.Second;
-        GenerarRitmo(seed);
-        CrearClave(sub_cant,sub_base);
-        escala = sc.CalculateScale("mi");
-        Debug.Log("escala: "+escala);
-        sc.CalculateQuality(escala);
-
+    // No tocar la primera de cada grupo [0, 1, 0, 1, 0, 1]
+    public void CalcularRelleno(){
+        for(int i=0; i < clave.Count(); i++){
+            if(clave[0] ==2){
+                relleno.Add(0);
+                relleno.Add(1);
+            }
+            else if(clave[0]==3){
+                relleno.Add(0);
+                relleno.Add(1);
+                relleno.Add(1);
+            }
+        }
     }
 
 }
