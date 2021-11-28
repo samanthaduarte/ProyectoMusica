@@ -47,7 +47,6 @@ public class RythmGenerator : MonoBehaviour {
             CrearClave(sub_cant,sub_base);
         }
         else{
-
             if(opciones_clave[index] == 1){
                 Debug.Log("negras");
             }

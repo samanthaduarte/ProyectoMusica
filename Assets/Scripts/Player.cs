@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
     public bool startSong;
     public ScaleCalculator sc = new ScaleCalculator();
     public ProgressionGenerator pg = new ProgressionGenerator();
-    public FormGenerator fg = new FormGenerator();
+    public ShapeGenerator sg = new ShapeGenerator();
     public MelodyGenerator mg = new MelodyGenerator();
     public RythmPlayer rp = new RythmPlayer();
     
@@ -48,10 +48,10 @@ public class Player : MonoBehaviour
         //      Escoger un acorde random
         //      Si es igual a (actualStrength) agregar
         //      Si es subdominante y el anterior tambien, no agregar (repetir funcion)
-        //estructura = pg.FillCompasses(acordes);
+        pg.acordes = acordesEscala;
 
         // Generar 4 estructuras de 8 compases cada una
-        //fg.GenerateForm();
+        //sg.GenerateForm();
 
     }
 

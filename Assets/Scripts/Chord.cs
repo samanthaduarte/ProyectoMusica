@@ -47,8 +47,8 @@ public class Chord : MonoBehaviour
     public void PlayChord(){
         Note note = GameObject.Find("Sounds").GetComponent<Note>();
         note.PlayNote(acorde[0]);
-        note.PlayNote(acorde[0]);
-        note.PlayNote(acorde[0]);
+        note.PlayNote(acorde[1]);
+        note.PlayNote(acorde[2]);
     }
 }
 

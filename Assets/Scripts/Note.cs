@@ -59,7 +59,7 @@ public class Note : MonoBehaviour
                 si.Play();
                 break;
             case "do1":
-                si.Play();
+                do1.Play();
                 break;
         }
 
