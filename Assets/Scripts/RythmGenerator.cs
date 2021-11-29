@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEngine.UI;
 
 public class RythmGenerator : MonoBehaviour {
 
@@ -16,12 +17,32 @@ public class RythmGenerator : MonoBehaviour {
     public List<int> clave = new List<int>();
     public List<int> relleno = new List<int>();
 
+    //play
+    public Text bpmTxt;
+
+    public Button btnGenerar;
+    public Text lblMetrica;
+    public Text lblClave;
+    public Text lblRelleno;
+
+    public AudioSource mainBeat;
+    public AudioSource mainBeat2;
+    public AudioSource halfBeat;
+    public double tiempoEntreBeats; 
+    public double tiempoCorcheas; 
+    public double tiempoSemicorcheas; 
+    public double BPM; 
+    public int Counter;
+    public int setTheTime = 1000;
+    public int metrica;
+
     
     public void StartRythm() {
         seed = System.DateTime.Now.Second;
         GenerarRitmo(seed);
         CrearClave(sub_cant,sub_base);
     }
+
 
     // Generar metrica, puede ser 3/4 o 4/4 
     public void GenerarRitmo(int seed){
@@ -75,5 +96,29 @@ public class RythmGenerator : MonoBehaviour {
             }
         }
     }
+
+    //play
+
+    
+    private void Update() {
+        tiempoEntreBeats = 60.0f / BPM;
+        tiempoCorcheas = tiempoEntreBeats/2;
+        tiempoSemicorcheas = tiempoEntreBeats/4;
+    }
+
+    
+    public void PlayRythm(){
+        StartCoroutine(secondRoutine());
+    }
+
+    IEnumerator secondRoutine(){
+        while(Time.time < setTheTime){
+            mainBeat.Play();
+            Debug.Log("main beat");
+            yield return new WaitForSecondsRealtime((float)tiempoEntreBeats);
+        }
+    }
+
+
 
 }

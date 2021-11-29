@@ -7,9 +7,10 @@ public class ShapeGenerator : MonoBehaviour
     public ProgressionGenerator pg = new ProgressionGenerator();
     private List<string> opciones = new List<string>();
 
-    public List<List<Chord>> GenerateShape()
+    public void GenerateShape()
     {
         List<List<Chord>> shapes = new List<List<Chord>>();
+        
         List<string> letters = new List<string>();
         opciones.Add("A");
         opciones.Add("B");
@@ -40,7 +41,5 @@ public class ShapeGenerator : MonoBehaviour
             }
         }
 
-        // Devolver shape
-        return(shapes);
     }
 }

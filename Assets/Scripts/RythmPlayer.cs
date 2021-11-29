@@ -15,9 +15,9 @@ public class RythmPlayer : MonoBehaviour
 
     public RythmGenerator rg = new RythmGenerator();
 
-    public AudioSource sonido;
-    public AudioSource sonido2;
-    public AudioSource sonidoCorchea;
+    public AudioSource mainBeat;
+    public AudioSource mainBeat2;
+    public AudioSource halfBeat;
     public double tiempoEntreBeats; 
     public double tiempoCorcheas; 
     public double tiempoSemicorcheas; 
@@ -37,8 +37,7 @@ public class RythmPlayer : MonoBehaviour
 
     }
     public void StartSong(){
-        rg.StartRythm();
-        rg.CalcularRelleno();
+
 
         lblMetrica.text = "Métrica: "+rg.sub_cant.ToString()+"/"+rg.sub_base.ToString();
         lblClave.text = "Clave: "+string.Join(",", rg.clave);
@@ -54,41 +53,15 @@ public class RythmPlayer : MonoBehaviour
 
         StartCoroutine(secondRoutine());
 
-
     }
     
     IEnumerator secondRoutine()
     {
-        while (Time.time < setTheTime) 
-        {
+        while (Time.time < setTheTime){
             Counter++;
-            if (Counter % metrica == 1)             
-            {
-                sonido.Play();
-                Debug.Log("primer negra");
-            }
-            else{
-                sonido.Play();
-                Debug.Log("negra");
-            }
-
-            if(rg.opciones_clave[rg.index] == 2){ // corcheas
-                yield return new WaitForSecondsRealtime((float)tiempoCorcheas); 
-                sonidoCorchea.Play();
-                Debug.Log("corchea");
-                yield return new WaitForSecondsRealtime((float)tiempoCorcheas); 
-            }
-            else if(rg.opciones_clave[rg.index] == 4){ // semicorcheas
-                yield return new WaitForSecondsRealtime((float)tiempoSemicorcheas); 
-                sonidoCorchea.Play();
-                Debug.Log("semicorchea");
-                yield return new WaitForSecondsRealtime((float)tiempoSemicorcheas); 
-            }
-            else{ 
-                yield return new WaitForSecondsRealtime((float)tiempoEntreBeats); 
-            }
-            
-            
+            mainBeat.Play();
+            Debug.Log("main beat");
+            yield return new WaitForSecondsRealtime((float)tiempoEntreBeats); 
         }
     }
 }

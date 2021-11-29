@@ -2653,6 +2653,21 @@ MonoBehaviour:
   subdivision_clave: 0
   clave: 
   relleno: 
+  bpmTxt: {fileID: 1889158607}
+  btnGenerar: {fileID: 1629026964}
+  lblMetrica: {fileID: 318856884}
+  lblClave: {fileID: 1133735202}
+  lblRelleno: {fileID: 1158253470}
+  mainBeat: {fileID: 990742158}
+  mainBeat2: {fileID: 0}
+  halfBeat: {fileID: 479275615}
+  tiempoEntreBeats: 0
+  tiempoCorcheas: 0
+  tiempoSemicorcheas: 0
+  BPM: 0
+  Counter: 0
+  setTheTime: 1000
+  metrica: 0
 --- !u!114 &1468575593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2667,13 +2682,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acordes: []
   estructura: []
-  totalDuration: 0
-  actualStrength: fuerte
-  actualType: 
-  index: 0
-  acorde: {fileID: 0}
+  listaLlena: 0
+  randChord: {fileID: 0}
+  lastRandType: 
   fuertes: []
   debiles: []
+  totalDuration: 
 --- !u!114 &1468575594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3667,13 +3681,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849dc6795881d744182d3c379d543f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnGenerar: {fileID: 1629026964}
+  lblNota: {fileID: 2092391231}
   sc: {fileID: 1468575591}
   pg: {fileID: 1468575593}
   sg: {fileID: 1468575595}
-  rp: {fileID: 1954346044}
+  rg: {fileID: 1468575592}
   acordesEscala: []
-  btnGenerar: {fileID: 1629026964}
-  lblNota: {fileID: 2092391231}
 --- !u!114 &1954346044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3681,7 +3695,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1954346037}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 263acbf7297b469489e3bb0b4da0e75c, type: 3}
   m_Name: 
@@ -3693,9 +3707,9 @@ MonoBehaviour:
   lblClave: {fileID: 1133735202}
   lblRelleno: {fileID: 1158253470}
   rg: {fileID: 1468575592}
-  sonido: {fileID: 990742158}
-  sonido2: {fileID: 479275615}
-  sonidoCorchea: {fileID: 1852126139}
+  mainBeat: {fileID: 1852126139}
+  mainBeat2: {fileID: 0}
+  halfBeat: {fileID: 1852126139}
   tiempoEntreBeats: 0
   tiempoCorcheas: 0
   tiempoSemicorcheas: 0

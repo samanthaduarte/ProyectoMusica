@@ -5,20 +5,18 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Button btnGenerar;
+    public Text lblNota;
     public ScaleCalculator sc = new ScaleCalculator();
     public ProgressionGenerator pg = new ProgressionGenerator();
     public ShapeGenerator sg = new ShapeGenerator();
-    public RythmPlayer rp = new RythmPlayer();
+    public RythmGenerator rg = new RythmGenerator();
+    //public RythmPlayer rp = new RythmPlayer();
     
     public List<Chord> acordesEscala = new List<Chord>();
 
-    public Button btnGenerar;
-    public Text lblNota;
-
-    List<List<Chord>> song = new List<List<Chord>>();
-
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         btnGenerar.onClick.AddListener(TaskOnClick);
     }
@@ -26,7 +24,8 @@ public class Player : MonoBehaviour
     void TaskOnClick()
     {
         // Generar clave, ritmo y relleno
-        rp.StartSong();
+        rg.StartRythm();
+        rg.CalcularRelleno();
 
         // Calcular la escala de una nota
         sc.CalculateScale();
@@ -37,7 +36,9 @@ public class Player : MonoBehaviour
 
         // Generar 4 estructuras de 8 compases cada una
         pg.acordes = acordesEscala; // pasar acordes generados de la escala al generador de formas
-        song = sg.GenerateShape();
+        sg.GenerateShape();
+
+        rg.PlayRythm();
 
     }
 
