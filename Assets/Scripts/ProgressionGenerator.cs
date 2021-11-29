@@ -5,79 +5,124 @@ using System.Linq;
 
 public class ProgressionGenerator : MonoBehaviour
 {
-    public ScaleCalculator sc = new ScaleCalculator();
-    public List<int> espacios = new List<int>();
+    public List<Chord> acordes;
     public List<Chord> estructura = new List<Chord>(); // conjunto de acordes en 8 compases
-
-    public int totalDuration = 0;
-    public string actualStrength = "fuerte";
-    public string actualType;
-    public List<string> possibleTypes;
-    public List<int> duracionAcorde = new List<int>();
-    public int index = 0;
-    public Chord acorde;
+    public bool listaLlena = false;
+    public bool isSubdom = false;
+    public int indexSub = 0;
+    public Chord randChord;
+    public string lastRandType;
     public List<Chord> fuertes;
     public List<Chord> debiles;
-    public List<Chord> acordes;
 
-
+    public List<int> totalDuration;
+    public List<string> types;
     public void WeakOrStrong(List<Chord> acordes){
         foreach (Chord element in acordes){
             if(element.strength == "fuerte"){
                 fuertes.Add(element);
             }
             if(element.strength == "debiles"){
-                fuertes.Add(element);
+                debiles.Add(element);
             }
         } 
     }
-    public List<Chord> FillCompasses()
+
+    //Clasificar en fuertes y débiles
+    // Generar estructura de 8 compases
+    //      Escoger un acorde random
+    //      Si es igual a (actualStrength) agregar !
+    //      Cambiar isStrong
+    //      Si no es subdominante y el anterior tampoco, agregar
+    //      Asignar duracion de los acordes (1 a 4 compases)
+    public List<Chord> FillCompasses() // Llenar 8 compases de acordes de la escala
     {
-        //Clasificar en fuertes y débiles
-        //WeakOrStrong(acordes);
-        // Generar estructura de 8 compases
-        //      Escoger un acorde random
-        //      Si es igual a (actualStrength) agregar !
-        //      Si es subdominante y el anterior tambien, no agregar (repetir funcion)
-        //      Asignar duracion de los acordes
-        // Un acorde puede durar 1 a 4 compases
 
-        acorde = acordes[Random.Range(0,acordes.Count())];
-
-        // Empezar con un acorde fuerte
-        if(acorde.strength == actualStrength){
-            estructura.Add(acorde);
-        }
-        else{
-            SetChord();  
-        }
-
-        while(totalDuration < 8){ 
-            // Verificar que no haya dos subdominantes seguidos
-            if(actualType == "subdominante" & estructura[index-1].type == "subdominante"){
-                SetChord(); 
+        while(!listaLlena){
+            SetChord(); 
+            if(totalDuration.Sum() + randChord.duration <= 8){
+                //if(lastRandType == "subdominante" & randChord.type != "subdominante"){
+                    totalDuration.Add(randChord.duration);
+                    lastRandType = randChord.type;
+                    estructura.Add(randChord);
+                //}
+                //else{
+                    Debug.Log(randChord.type + " igual a " + lastRandType);
+                //}
             }
-            else{
-                acorde.SetDuration(Random.Range(0,5));
-                totalDuration = totalDuration+acorde.duration;
-                estructura.Add(acorde);
-                index++;
+            else if(totalDuration.Sum() == 8){
+                listaLlena = true;
             }
         }
-        // Validar que el acorde no dure más de 4 compases y que toda la estructura no sume mas de 8 compases
-        if(totalDuration > 8 || acorde.duration > 4){
-            estructura.RemoveAt(estructura.Count()-1);
-            FillCompasses();
+
+        foreach (Chord chord in estructura){ 
+            Debug.Log(chord.nombre + chord.type + chord.duration + chord.strength);
         }
 
         return(estructura);
- 
     }
 
     public void SetChord(){
-        acorde = acordes[Random.Range(0,acordes.Count())];
-        actualType = acorde.type;
-        actualStrength = acorde.strength;
+        randChord = acordes[Random.Range(0,acordes.Count())];
+        randChord.duration = Random.Range(1,5);
+        lastRandType = randChord.type;
     }
 
 }
+
+
+
+/*
+
+            
+
+
+
+            if(totalDuration.Sum() == 8){
+                break;
+            }
+            else{
+                SetChord(); 
+                totalDuration.Add(randChord.duration);
+                estructura.Add(randChord);
+            }
+
+
+
+        Chord randChord = SetChord();
+        if(randChord.type == "subdominante" & randChord.type != "subdominante"){
+            estructura.Add(randChord);
+        }else{
+
+        }
+
+        if(totalDuration < 8){
+            Chord randChord = SetChord();
+            estructura.Add(randChord); 
+        }
+        return(estructura);
+
+
+if(num%2 == 0){
+  Console.WriteLine("Number is even")
+}else{
+  Console.WriteLine("Number is odd")
+}
+
+        while(totalDuration < 8){  
+            Chord randChord = acordes[Random.Range(0,acordes.Count())];
+            estructura.Add(randChord);
+            randChord.duration = Random.Range(1,5);
+            totalDuration = totalDuration + randChord.duration;
+        }
+        
+        // Validar que el arreglo cumpla con los requisitos
+        if(totalDuration > 8){
+            estructura.Clear();
+            FillCompasses();
+        }
+        
+        return(estructura);
+ 
+
+        }*/

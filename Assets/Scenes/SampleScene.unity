@@ -2606,11 +2606,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1468575596}
-  - component: {fileID: 1468575595}
-  - component: {fileID: 1468575594}
-  - component: {fileID: 1468575593}
   - component: {fileID: 1468575592}
   - component: {fileID: 1468575591}
+  - component: {fileID: 1468575593}
+  - component: {fileID: 1468575595}
+  - component: {fileID: 1468575594}
   m_Layer: 0
   m_Name: Generators
   m_TagString: Untagged
@@ -2630,17 +2630,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e543b7005d6a0724db49eac38dc5dbf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notaIndex: 0
   escala: []
-  notaInput: 
-  notas: []
-  escala1: []
-  escala2: []
-  notasEscala: []
-  sl1: []
-  sl2: []
   acordes: []
-  note: {fileID: 178902710}
+  chordPrefab: {fileID: 6231627679547990642, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+  notaInput: 
 --- !u!114 &1468575592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2656,7 +2649,6 @@ MonoBehaviour:
   sub_base: 4
   sub_cant: 0
   index: 0
-  seed: 0
   opciones_clave: 010000000200000004000000
   subdivision_clave: 0
   clave: 
@@ -2673,10 +2665,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2706a1abd97fa7143936ae4d4e336061, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sc: {fileID: 0}
-  espacios: 
+  acordes: []
+  estructura: []
   totalDuration: 0
   actualStrength: fuerte
+  actualType: 
+  index: 0
+  acorde: {fileID: 0}
+  fuertes: []
+  debiles: []
 --- !u!114 &1468575594
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2701,6 +2698,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88a51b7b7b961b4e9c8b2ce5fbc28c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pg: {fileID: 1468575593}
 --- !u!4 &1468575596
 Transform:
   m_ObjectHideFlags: 0
@@ -3669,14 +3667,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 849dc6795881d744182d3c379d543f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startSong: 0
   sc: {fileID: 1468575591}
   pg: {fileID: 1468575593}
-  fg: {fileID: 1468575595}
-  mg: {fileID: 1468575594}
+  sg: {fileID: 1468575595}
   rp: {fileID: 1954346044}
-  acordes: []
-  estructura: []
+  acordesEscala: []
   btnGenerar: {fileID: 1629026964}
   lblNota: {fileID: 2092391231}
 --- !u!114 &1954346044
@@ -3989,3 +3984,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2097967920}
   m_CullTransparentMesh: 1
+--- !u!1001 &1305840884863811465
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6231627679547990642, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_Name
+      value: Chord
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 189.84439
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 111.81725
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -21.25356
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7593898707729012294, guid: 2d432f53a0c125544af03d770d625e10, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2d432f53a0c125544af03d770d625e10, type: 3}

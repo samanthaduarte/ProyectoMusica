@@ -8,7 +8,7 @@ public class RythmGenerator : MonoBehaviour {
     public int sub_base = 4;
     public int sub_cant;
     public int index;
-    public int seed;
+    private int seed;
     //4 negras, 8 corcheas o 16 semicorcheas
     //3 negras, 6 corcheas o 12 semicorcheas
     public int[] opciones_clave = new int[] {1,2,4};
@@ -74,14 +74,6 @@ public class RythmGenerator : MonoBehaviour {
                 relleno.Add(1);
             }
         }
-    }
-
-    public void PlayRelleno(){
-
-    }
-
-    public void PlayRythm(){
-
     }
 
 }

@@ -8,9 +8,9 @@ using Random = UnityEngine.Random;
 
 // Calculador de escalas, calidad y acordes diatonicos
 public class ScaleCalculator : MonoBehaviour {
-
-    public int notaIndex = 0;
     public List<string> escala = new List<string>();
+    public List<Chord> acordes = new List<Chord>();
+    public GameObject chordPrefab;
     public string notaInput;
     private List<string> notas = new List<string>();
 
@@ -20,12 +20,9 @@ public class ScaleCalculator : MonoBehaviour {
 
     private List<string> sl1;
     private List<string> sl2;
-    public List<Chord> acordes = new List<Chord>();
-
-    public Note note = new Note();
 
 
-    // Recibe una nota y devuelve su escala
+    // Devuelve la escala de una nota
     public void CalculateScale(){
         notas.Add("do");
         notas.Add("do#");
@@ -84,15 +81,18 @@ public class ScaleCalculator : MonoBehaviour {
     public List<Chord> CalculateChords(){
 
         for (int i = 0; i < 7; i++) {
-            Chord acordeObj = new Chord();
+            
+            GameObject acordeGM = Instantiate(chordPrefab, new Vector3(0, 0, 0), Quaternion.identity);
+            Chord acordeObj = acordeGM.GetComponent<Chord>();
             acordeObj.index = i;
             acordeObj.acorde.Add(escala[i%7]); // agregar notas al objeto chord
             acordeObj.acorde.Add(escala[(i+2)%7]);
             acordeObj.acorde.Add(escala[(i+4)%7]);
+            //acordeObj.SetName();
             acordeObj.SetType();
             acordeObj.SetStrength();
+            acordeObj.SetName();
             acordes.Add(acordeObj);
-            i+=1;
         }
         return(acordes);
 

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Chord : MonoBehaviour
 {
+    public string nombre;
+
     public int index;
     public List<string> acorde = new List<string>();
     public int duration = 0; //duracion (compases que ocupa) del acorde
@@ -32,7 +34,7 @@ public class Chord : MonoBehaviour
         if(type == "tonica" ){
             strength = "fuerte";
         }
-        else if(type == "sudominante" ){
+        else if(type == "subdominante" ){
             strength = "debil";
         }
         else if(type == "dominante"){
@@ -42,6 +44,22 @@ public class Chord : MonoBehaviour
 
     public void SetDuration(int dur){
         duration = dur;
+    }
+
+    public void SetName(){
+        if(index == 0 || index == 3 || index == 4){
+            nombre = acorde[0] + " mayor";
+        }
+        else if(index == 1 || index == 2 || index == 5){
+            nombre = acorde[0] + " menor";
+        }
+        else if(index == 6){
+            nombre = acorde[0] + " disminuido";
+        }
+        else{
+            Debug.Log("no index found");
+        }
+        
     }
 
     public void PlayChord(){

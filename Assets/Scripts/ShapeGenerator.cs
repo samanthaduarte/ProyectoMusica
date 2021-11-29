@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class ShapeGenerator : MonoBehaviour
 {
-    public List<Chord> estructura = new List<Chord>(); // conjunto de acordes en 8 compases
     public ProgressionGenerator pg = new ProgressionGenerator();
-    public List<string> opciones = new List<string>();
+    private List<string> opciones = new List<string>();
 
-    public List<List<Chord>> GenerateShape(List<string> estructura)
+    public List<List<Chord>> GenerateShape()
     {
         List<List<Chord>> shapes = new List<List<Chord>>();
         List<string> letters = new List<string>();
@@ -17,21 +16,26 @@ public class ShapeGenerator : MonoBehaviour
         opciones.Add("C");
         opciones.Add("D");
 
-        // Asignar una estructura diferente a cada letra
+        // Una lista de 8 compases de acordes por seccion
+        List<Chord> estructuraA = pg.FillCompasses();
+        List<Chord> estructuraB = pg.FillCompasses();
+        List<Chord> estructuraC = pg.FillCompasses();
+        List<Chord> estructuraD = pg.FillCompasses();
+
         foreach (string letra in opciones){
-            switch(opciones[Random.Range(0,5)]){
+            switch(opciones[Random.Range(0,4)]){
                 // Generar una combinacion al azar
                 case "A":
-                    shapes.Add(pg.FillCompasses());
+                    shapes.Add(estructuraA);
                     break;
                 case "B":
-                    shapes.Add(pg.FillCompasses());
+                    shapes.Add(estructuraB);
                     break;
                 case "C":
-                    shapes.Add(pg.FillCompasses());
+                    shapes.Add(estructuraC);
                     break;
                 case "D":
-                    shapes.Add(pg.FillCompasses());
+                    shapes.Add(estructuraD);
                     break;
             }
         }
